@@ -34,7 +34,7 @@ app.controller('Main', function ($rootScope, $scope, $modal){
 
         $scope.gearInches = inches(cog, cr).toFixed(2);
         $scope.gearRatio  = ratio(cog, cr).toFixed(2);
-        $scope.gearSpeedd = kmh(cog, cr, cad).toFixed(2);
+        $scope.gearSpeed  = kmh(cog, cr, cad).toFixed(2);
         $scope.gearTt     = tt(cog, cr, cad);
 
         $scope.$apply();
