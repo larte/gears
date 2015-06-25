@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Sans', sans-serif;
+    color: #1f2636;
+    font-size: 1.2em;
+}
+
+header {
+    background: #0db9f0;
+    color: #fff;
+    margin: -2em;
+    margin-bottom: 2em;
+    text-align: center;
+    padding: 2em 0;
+}
+
+h1 {
+    font-weight: 300;
+}
+.wrapper {
+    background: #fff;
+    padding: 2em;
+}
+
+article {
+    margin-bottom: 2em;
+}
+
+
+#results td, #results th {
+            font-size:2.2em;
+            border:1px solid gray;
+            padding:3px 7px 2px 7px;
+            border-collapse:collapse;
+}
+
+#results th
+{
+    font-size:1.4em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#0DB9F0;
+    color:#fff;
+}
+
+#results tr.alt td
+{
+    color:#000;
+    background-color:#EAF2D3;
+}
+
+/**
+ * Angular JS slider directive
+ *
+ * (c) Rafal Zajac <rzajac@gmail.com>
+ * http://github.com/rzajac/angularjs-slider
+ *
+ * Licensed under the MIT license
+ */
+
+/* Slider colors */
+
+/* Slider size parameters */
+
+rzslider {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 4px;
+  margin: 30px 0 15px 0;
+  vertical-align: middle;
+}
+
+rzslider span {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+rzslider span.rz-base {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+rzslider span.rz-bar {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: #d8e0f3;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+
+rzslider span.rz-bar.rz-selection {
+  z-index: 1;
+  width: 0;
+  background: #0db9f0;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+
+rzslider span.rz-pointer {
+  top: -14px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background-color: #0db9f0;
+  -webkit-border-radius: 16px;
+     -moz-border-radius: 16px;
+          border-radius: 16px;
+}
+
+rzslider span.rz-pointer:after {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  content: '';
+}
+
+rzslider span.rz-pointer:hover:after {
+  background-color: #ffffff;
+}
+
+rzslider span.rz-pointer.rz-active:after {
+  background-color: #451aff;
+}
+
+rzslider span.rz-bubble {
+  top: -32px;
+  padding: 1px 3px;
+  color: #55637d;
+  cursor: default;
+}
+
+rzslider span.rz-bubble.rz-selection {
+  top: 16px;
+}
+
+rzslider span.rz-bubble.rz-limit {
+  color: #55637d;
+}

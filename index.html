@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="gears">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Gears</title>
+        <link rel="stylesheet" href="styles/main.css" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+    </head>
+
+    <body ng-controller="Main">
+
+        <div class="wrapper">
+            <header>
+                <h1>With 700*22c (2092 mm, 26.215") tire size</h1>
+            </header>
+
+            <article>
+                <h2>Chainring {{ chainSlider }}</h2>
+
+                <rzslider rz-slider-model="chainSlider"
+                          rz-slider-floor="32"
+                          rz-slider-ceil="65"
+                          rz-slider-always-show-bar="true"></rzslider>
+            </article>
+
+
+            <article>
+                <h2>Cog {{ cogSlider }}</h2>
+
+                <rzslider rz-slider-model="cogSlider"
+                          rz-slider-floor="11"
+                          rz-slider-ceil="21"
+                          rz-slider-always-show-bar="true"></rzslider>
+            </article>
+
+            <article>
+                <h2>Cadence {{ cadenceSlider }}</h2>
+
+                <rzslider rz-slider-model="cadenceSlider"
+                          rz-slider-floor="10"
+                          rz-slider-ceil="250"
+                          rz-slider-always-show-bar="true"></rzslider>
+            </article>
+
+            <article id="results">
+                <table>
+                    <tr>
+                        <th>Gear inches</th>
+                        <th>Gear ratio</th>
+                        <th>Speed km/h</th>
+                        <th>Flying 200 time</th>
+                    </tr>
+                    <tr>
+                        <td>{{ gearInches }}</td>
+                        <td>{{ gearRatio }}</td>
+                        <td>{{ gearSpeed }}</td>
+                        <td>{{ gearTt }}</td>
+                    </tr>
+                </table>
+
+            </article>
+        </div>
+
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/rzslider.js"></script>
+        <script src="js/ui-bootstrap-tpls.js"></script>
+        <script src="js/gears.js"></script>
+    </body>
+</html>
