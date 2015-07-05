@@ -6,8 +6,10 @@ String.prototype.toMMSS = function () {
     var minutes = Math.floor(((sec_num - (hours * 3600.0)) / 60.0 + (hours * 60.0)));
     var seconds = sec_num - (hours * 3600.0) - (minutes * 60.0);
 
+
+    seconds = parseFloat(seconds).toFixed(3);
     if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = minutes+':'+ parseFloat(seconds).toFixed(3);
+    var time    = minutes+':'+ seconds;
     return time;
 };
 
