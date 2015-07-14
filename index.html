@@ -18,7 +18,7 @@
             <article>
                 <h2>Chainring {{ chainSlider }}</h2>
                 <rzslider rz-slider-model="chainSlider"
-                          rz-slider-floor="32"
+                          rz-slider-floor="45"
                           rz-slider-ceil="65"
                           rz-slider-always-show-bar="true"></rzslider>
             </article>
@@ -26,7 +26,7 @@
                 <h2>Cog {{ cogSlider }}</h2>
                 <rzslider rz-slider-model="cogSlider"
                           rz-slider-floor="11"
-                          rz-slider-ceil="21"
+                          rz-slider-ceil="18"
                           rz-slider-always-show-bar="true"></rzslider>
             </article>
             <article>
@@ -37,8 +37,19 @@
                           rz-slider-ceil="250"
                           rz-slider-always-show-bar="true"></rzslider>
             </article>
-            <article id="results">
+            <article id="equivalent">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </article>
+            <article class="results">
                 <table>
+                    <th colspan=2>
+                        {{ chainSlider }}X{{ cogSlider }}
+                    </th>
                     <tr>
                         <td>Gear inches</td>
                         <td>{{ gearInches }}</td>
@@ -48,26 +59,36 @@
                         <td>{{ gearRatio }}</td>
                     </tr>
                     <tr>
-                        <td>Speed km/h</td>
-                        <td>{{ gearSpeed }}</td>
+                        <td>Speed @ {{ cadenceSlider }}</td>
+                        <td>{{ gearSpeed }} km/h</td>
                     </tr>
                     <tr>
-                        <td>200</td>
+                        <td>200m tt</td>
                         <td>{{ gearTt }}</td>
                     </tr>
-                    <tr>
-                        <td>400</td>
-                        <td>{{ gear400 }}</td>
                     </tr>
+                </table>
+            </article>
+            <article class="results">
+                <table>
+                    <th colspan=2>
+                        Equivalent {{ equiv_up.chainring }} X {{ equiv_up.cog }}
+                    </th>
                     <tr>
-                        <td>500</td>
-                        <td>{{ gear500 }}</td>
+                        <td>Gear inches</td>
+                        <td>{{ equiv_up.inches }}</td>
                     </tr>
+                </table>
+            </article>
+            <article class="results">
+                <table>
+                    <th colspan=2>
+                        Equivalent {{ equiv_down.chainring }} X {{ equiv_down.cog }}
+                    </th>
                     <tr>
-                        <td>1000</td>
-                        <td>{{ gear1000 }}</td>
+                        <td>Gear inches</td>
+                        <td>{{ equiv_down.inches }}</td>
                     </tr>
-
                 </table>
             </article>
         </div>

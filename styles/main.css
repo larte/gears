@@ -31,14 +31,14 @@ article {
 }
 
 
-#results td, #results th {
+.results td, .results th {
             font-size:2.2em;
             border:1px solid gray;
             padding:3px 7px 2px 7px;
             border-collapse:collapse;
 }
 
-#results th
+.results th
 {
     font-size:1.4em;
     text-align:left;
@@ -48,7 +48,7 @@ article {
     color:#fff;
 }
 
-#results tr.alt td
+.results tr.alt td
 {
     color:#000;
     background-color:#EAF2D3;
