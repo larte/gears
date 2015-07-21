@@ -54,10 +54,10 @@ var Gear = function(cogsize, chainringsize){
             if ((ch < 47) || (ch > 60))
                 return;
 
-            if (res.down == null || ((eq_rat<rat) && (eq_rat > res.down.ratio()))) {
+            if ((eq_rat<rat) && (res.down == null || eq_rat > res.down.ratio())) {
                 res.down = new Gear(cog, ch);
             }
-            else if (res.up == null || ((eq_rat > rat) && eq_rat < res.up.ratio())) {
+            else if ((eq_rat > rat) && (res.up == null || eq_rat < res.up.ratio() )) {
                 res.up = new Gear(cog, ch);
             }
         }
