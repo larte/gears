@@ -18,15 +18,15 @@
             <article>
                 <h2>Chainring {{ chainSlider }}</h2>
                 <rzslider rz-slider-model="chainSlider"
-                          rz-slider-floor="45"
-                          rz-slider-ceil="65"
+                          rz-slider-floor="46"
+                          rz-slider-ceil="60"
                           rz-slider-always-show-bar="true"></rzslider>
             </article>
             <article>
                 <h2>Cog {{ cogSlider }}</h2>
                 <rzslider rz-slider-model="cogSlider"
                           rz-slider-floor="11"
-                          rz-slider-ceil="18"
+                          rz-slider-ceil="17"
                           rz-slider-always-show-bar="true"></rzslider>
             </article>
             <article>
@@ -72,22 +72,22 @@
             <article class="results">
                 <table>
                     <th colspan=2>
-                        Equivalent {{ equiv_up.chainring }} X {{ equiv_up.cog }}
+                        Equivalent {{ equiv_up.ch }} X {{ equiv_up.cog }}
                     </th>
                     <tr>
                         <td>Gear inches</td>
-                        <td>{{ equiv_up.inches }}</td>
+                        <td>{{ equiv_up.inches().toFixed(2) }}</td>
                     </tr>
                 </table>
             </article>
             <article class="results">
                 <table>
                     <th colspan=2>
-                        Equivalent {{ equiv_down.chainring }} X {{ equiv_down.cog }}
+                        Equivalent {{ equiv_down.ch }} X {{ equiv_down.cog }}
                     </th>
                     <tr>
                         <td>Gear inches</td>
-                        <td>{{ equiv_down.inches }}</td>
+                        <td>{{ equiv_down.inches().toFixed(2) }}</td>
                     </tr>
                 </table>
             </article>

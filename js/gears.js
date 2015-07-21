@@ -42,23 +42,33 @@ var Gear = function(cogsize, chainringsize){
 
     self.equivalent = function(cogsize, chsize) {
         var rat = self.ratio();
-        var res = {"up":   {"ratio":rat + 1.0, "cog": 0, "chainring": 0},
-                   "down": {"ratio":rat - 1.0, "cog": 0, "chainring": 0}};
+        var res = {"up": null, "down": null};
 
-        var erat = 0.0;
-        for (var cog = 11; cog  < 17; cog++){
-            for (var ch = 47; ch < 60; ch++) {
-                var eg = new Gear(cog,ch);
-                erat = eg.ratio();
-                if ( (erat < rat) && ( erat > res["down"]["ratio"] ) ){
-                    res["down"] = {"ratio": erat, inches: eg.inches().toFixed(2),
-                                   "cog": cog, "chainring": ch}
-                }
-                else if ( (erat > rat) && (erat < res["up"]["ratio"]) ){
-                    res["up"] = {"ratio": erat, inches: eg.inches().toFixed(2),
-                                 "cog": cog, "chainring": ch}
-                }
+        var check_ratio = function(cog, ch, res) {
+            var eq = new Gear(cog, ch);
+            var eq_rat = eq.ratio();
 
+            if ((cog < 11) || (cog > 17))
+                return;
+
+            if ((ch < 47) || (ch > 60))
+                return;
+
+            if (res.down == null || ((eq_rat<rat) && (eq_rat > res.down.ratio()))) {
+                res.down = new Gear(cog, ch);
+            }
+            else if (res.up == null || ((eq_rat > rat) && eq_rat < res.up.ratio())) {
+                res.up = new Gear(cog, ch);
+            }
+        }
+
+
+        var cogs = Array.apply(null, Array(5)).map(function(_,i) {return (self.cog - 2) + i;});
+        var chainrings = Array.apply(null, Array(9)).map(function(_,i) {return (self.ch - 4) + i;});
+
+        for (var i = 0; i  < cogs.length; i++) {
+            for (var j = 0; j  < chainrings.length; j++) {
+                check_ratio(cogs[i], chainrings[j], res);
             }
         }
         return res;
@@ -89,8 +99,8 @@ app.controller('Main', function ($rootScope, $scope, $modal){
         $scope.gearSpeed  = g.speed_at(cad).toFixed(2);
         $scope.gearTt     = g.time(cad, 200.0);
         var equivs        = g.equivalent();
-        $scope.equiv_up   = equivs["up"];
-        $scope.equiv_down = equivs["down"];
+        $scope.equiv_up   = equivs.up;
+        $scope.equiv_down = equivs.down;
 
         $scope.$apply();
     };
