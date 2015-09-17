@@ -79,7 +79,7 @@ var Gear = function(cogsize, chainringsize){
 
 
 
-var app = angular.module('gears', ['ui.bootstrap','rzModule']);
+var app = angular.module('gears', ['ui.bootstrap','rzModule','nya.bootstrap.select']);
 
 app.controller('Main', function ($rootScope, $scope, $modal){
 

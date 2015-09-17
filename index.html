@@ -7,13 +7,19 @@
         <title>gears.larte.io - A gear calculator for track cycling.</title>
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/nya-bs-select.min.css">
     </head>
     <body ng-controller="Main">
         <a href="https://github.com/larte/gears"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
         <div class="wrapper">
             <header>
-                <h1>Gear/speed calculator with 700*22c (2111 mm, 26.45") tire size</h1>
+                <h1>Gear/speed calculator with <ol class="nya-bs-select" ng-model="circ">
+                    <li class="nya-bs-option" value="26.218"><a>2092mm - 26.218"</a></li>
+                    <li class="nya-bs-option" value="26.45"><a>2111mm - 26.45"</a></li>
+                </li>
+            </ol>tire size</h1>
             </header>
+
 
             <article>
                 <h2>Chainring {{ chainSlider }}</h2>
@@ -96,6 +102,7 @@
         <script src="js/rzslider.js"></script>
         <script src="js/ui-bootstrap-tpls.js"></script>
         <script src="js/gears.js"></script>
+        <script src="js/nya-bs-select.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
