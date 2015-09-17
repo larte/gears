@@ -20,7 +20,7 @@ var Gear = function(cogsize, chainringsize){
     this.ch  = chainringsize;
 
     self.inches = function() {
-        return 26.216 * (self.ch / self.cog);
+        return 26.45 * (self.ch / self.cog);
     }
 
     self.ratio = function() {
@@ -28,7 +28,7 @@ var Gear = function(cogsize, chainringsize){
     }
 
     self.speed_at = function(cad) {
-        return (0.0000254 * (cad * ( self.ratio() * (26.216 * Math.PI)) * 60.0));
+        return (0.0000254 * (cad * ( self.ratio() * (26.45 * Math.PI)) * 60.0));
     }
 
 
