@@ -14,13 +14,15 @@ String.prototype.toMMSS = function () {
 };
 
 
-var Gear = function(cogsize, chainringsize){
+var Gear = function(cogsize, chainringsize, circ){
     var self = this;
     this.cog = cogsize;
     this.ch  = chainringsize;
+    this.wheel_circ = circ; // circumference in mm
+
 
     self.inches = function() {
-        return 26.45 * (self.ch / self.cog);
+        return self.circ_to_inches(self.wheel_circ) * (self.ch / self.cog);
     }
 
     self.ratio = function() {
@@ -28,7 +30,7 @@ var Gear = function(cogsize, chainringsize){
     }
 
     self.speed_at = function(cad) {
-        return (0.0000254 * (cad * ( self.ratio() * (26.45 * Math.PI)) * 60.0));
+        return (0.0000254 * (cad * ( self.ratio() * (self.circ_to_inches(self.wheel_circ) * Math.PI)) * 60.0));
     }
 
 
@@ -39,13 +41,16 @@ var Gear = function(cogsize, chainringsize){
         return sec;
     }
 
+    self.circ_to_inches = function(mm) {
+        return  (mm / Math.PI) * 0.0393700797;
+    }
 
-    self.equivalent = function(cogsize, chsize) {
+    self.equivalent = function(cogsize, chsize, circ) {
         var rat = self.ratio();
         var res = {"up": null, "down": null};
 
         var check_ratio = function(cog, ch, res) {
-            var eq = new Gear(cog, ch);
+            var eq = new Gear(cog, ch, self.wheel_circ);
             var eq_rat = eq.ratio();
 
             if ((cog < 11) || (cog > 17))
@@ -55,10 +60,10 @@ var Gear = function(cogsize, chainringsize){
                 return;
 
             if ((eq_rat<rat) && (res.down == null || eq_rat > res.down.ratio())) {
-                res.down = new Gear(cog, ch);
+                res.down = new Gear(cog, ch, self.wheel_circ);
             }
             else if ((eq_rat > rat) && (res.up == null || eq_rat < res.up.ratio() )) {
-                res.up = new Gear(cog, ch);
+                res.up = new Gear(cog, ch, self.wheel_circ);
             }
         }
 
@@ -91,8 +96,9 @@ app.controller('Main', function ($rootScope, $scope, $modal){
         var cr = parseFloat($scope.chainSlider);
         var cog = parseFloat($scope.cogSlider);
         var cad = parseFloat($scope.cadenceSlider);
+        var wheel_circ = parseFloat($scope.selected.value);
 
-        var g = new Gear(cog, cr);
+        var g = new Gear(cog, cr, wheel_circ);
 
         $scope.gearInches = g.inches().toFixed(2);
         $scope.gearRatio  = g.ratio().toFixed(2);
@@ -105,9 +111,36 @@ app.controller('Main', function ($rootScope, $scope, $modal){
         $scope.$apply();
     };
 
+    $scope.wheels = [{
+        id: 1,
+        label: '700*20c (2086 mm)',
+        value: 2086
+    },
+    {
+        id: 2,
+        label: '700*22c (2091 mm)',
+        value: 2091
+    },
+    {
+        id: 3,
+        label: '700*23c (2096 mm)',
+        value: 2096
+    },
+    {
+        id: 4,
+        label: '700*25c (2105 mm)',
+        value: 2105
+    }
+
+
+    ];
+
+    $scope.selected = $scope.wheels[1];
+
     $scope.$on("slideEnded", function() {
         $scope.calculate();
     });
+
 
     angular.element(document).ready(function () {
         $scope.calculate();
